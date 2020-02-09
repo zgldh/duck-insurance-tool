@@ -3,19 +3,19 @@
 </mat-toolbar>
 <div class="main-container" fxLayout="column">
   <form [formGroup]="form" fxLayout.gt-xs="row wrap" fxLayout="column wrap" fxLayoutGap="5%">
-    <mat-form-field fxFlex.gt-xs="45%" fxFlex="100%">
+    <mat-form-field fxFlex.gt-xs="45%">
       <mat-label>交强险</mat-label>
       <input matInput formControlName="compulsoryFee" type="number" min="0">
     </mat-form-field>
-    <mat-form-field fxFlex.gt-xs="45%" fxFlex="100%">
+    <mat-form-field fxFlex.gt-xs="45%">
       <mat-label>商业险</mat-label>
       <input matInput formControlName="commercialFee" type="number" min="0">
     </mat-form-field>
-    <mat-form-field fxFlex.gt-xs="45%" fxFlex="100%">
+    <mat-form-field fxFlex.gt-xs="45%">
       <mat-label>交强险佣金率</mat-label>
       <input matInput formControlName="compulsoryBrokerageRate" type="number" min="0">
     </mat-form-field>
-    <mat-form-field fxFlex.gt-xs="45%" fxFlex="100%">
+    <mat-form-field fxFlex.gt-xs="45%">
       <mat-label>商业险佣金率</mat-label>
       <input matInput formControlName="commercialBrokerage" type="number" min="0">
     </mat-form-field>

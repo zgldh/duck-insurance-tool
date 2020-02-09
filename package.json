@@ -2,6 +2,16 @@
     "name": "duck-insurance-tool",
     "version": "0.0.1",
     "private": true,
+    "scripts": {
+        "ng": "ng",
+        "start": "ng serve",
+        "build": "ng build",
+        "upload": "qshell qupload qupload.json",
+        "cdnrefresh": "qshell cdnrefresh -i qcdn",
+        "test": "ng test",
+        "lint": "ng lint",
+        "e2e": "ng e2e"
+    },
     "dependencies": {
         "@angular/animations": "^8.2.12",
         "@angular/cdk": "8.2.3",
@@ -18,15 +28,6 @@
         "rxjs": "^6.5.2",
         "tslib": "^1.9.0",
         "zone.js": "^0.9.1"
-    },
-    "scripts": {
-        "ng": "ng",
-        "start": "ng serve",
-        "build": "ng build",
-        "upload": "qshell qupload qupload.json",
-        "test": "ng test",
-        "lint": "ng lint",
-        "e2e": "ng e2e"
     },
     "devDependencies": {
         "@angular-devkit/build-angular": "^0.800.6",
