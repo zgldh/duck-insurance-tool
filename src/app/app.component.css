@@ -1,10 +1,14 @@
 p {
-  font-family: Lato;
+    font-family: Lato;
 }
-.main-container{
-  margin: 1em;
+.main-container {
+    margin: 1em;
 }
 
-.numbers{
-  text-align:right;
+.numbers {
+    text-align: right;
+}
+
+.result-table {
+    width: 100%;
 }
