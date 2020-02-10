@@ -6,19 +6,23 @@
   <form [formGroup]="form" fxLayout="column" fxLayoutGap="5%">
     <mat-form-field>
       <mat-label>交强险</mat-label>
-      <input matInput formControlName="compulsoryFee" type="number" min="0">
+      <input matInput #compulsoryFee formControlName="compulsoryFee" (focus)="onInputFocus(compulsoryFee)" type="number"
+        min="0">
     </mat-form-field>
     <mat-form-field>
       <mat-label>商业险</mat-label>
-      <input matInput formControlName="commercialFee" type="number" min="0">
+      <input matInput #commercialFee formControlName="commercialFee" (focus)="onInputFocus(commercialFee)" type="number"
+        min="0">
     </mat-form-field>
     <mat-form-field>
       <mat-label>交强险佣金率</mat-label>
-      <input matInput formControlName="compulsoryBrokerageRate" type="number" min="0">
+      <input matInput #compulsoryBrokerageRate formControlName="compulsoryBrokerageRate"
+        (focus)="onInputFocus(compulsoryBrokerageRate)" type="number" min="0">
     </mat-form-field>
     <mat-form-field>
       <mat-label>商业险佣金率</mat-label>
-      <input matInput formControlName="commercialBrokerage" type="number" min="0">
+      <input matInput #commercialBrokerage formControlName="commercialBrokerage"
+        (focus)="onInputFocus(commercialBrokerage)" type="number" min="0">
     </mat-form-field>
   </form>
 

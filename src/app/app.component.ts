@@ -112,6 +112,10 @@ export class AppComponent {
     })
     return foundRow ? foundRow[columnName] : 0;
   }
+
+  public onInputFocus(inputControlDom) {
+    inputControlDom.select();
+  }
 }
 
 export interface CalculationRow {
