@@ -69,7 +69,7 @@ export class AppComponent {
       this.calculationResult.forEach(item => {
         switch (item.title) {
           case 'compulsoryBrokerage':
-            item.taxSeparated = compulsoryFee * compulsoryBrokerageRate;
+            item.taxSeparated = compulsoryFee * compulsoryBrokerageRate / AppComponent.TAX_RATE;
             item.taxIncluded = compulsoryFee * compulsoryBrokerageRate;
             break;
           case 'commercialBrokerage':
