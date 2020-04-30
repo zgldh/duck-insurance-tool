@@ -12,12 +12,21 @@ import { environment } from 'src/environments/environment';
 export class AppComponent {
 
   static TAX_RATE = 1.06;
+  static COLUMNS_ALL = ['label', 'taxSeparated', 'taxIncluded'];
+  static COLUMNS_SEPARATED = ['label', 'taxSeparated'];
+  static COLUMNS_INCLUDED = ['label', 'taxIncluded'];
+  static COLUMNS_SETTING_LOOP = [
+    AppComponent.COLUMNS_ALL,
+    AppComponent.COLUMNS_SEPARATED,
+    AppComponent.COLUMNS_INCLUDED
+  ];
 
   environment = environment;
   form: FormGroup;
   totalFee: number = 1000;
 
-  calculationColumns: string[] = ['label', 'taxSeparated', 'taxIncluded'];
+  columnsSettingLoopIndex = 0;
+  calculationColumns: string[] = AppComponent.COLUMNS_SETTING_LOOP[this.columnsSettingLoopIndex];
   calculationResult: CalculationRow[] = [
     {
       title: 'compulsoryBrokerage',
@@ -118,6 +127,11 @@ export class AppComponent {
 
   public onInputFocus(inputControlDom) {
     inputControlDom.select();
+  }
+
+  public onLoopColumns() {
+    this.columnsSettingLoopIndex = (this.columnsSettingLoopIndex + 1) % AppComponent.COLUMNS_SETTING_LOOP.length;
+    this.calculationColumns = AppComponent.COLUMNS_SETTING_LOOP[this.columnsSettingLoopIndex];
   }
 }
 

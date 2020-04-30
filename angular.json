@@ -20,6 +20,7 @@
                         "tsConfig": "src/tsconfig.app.json",
                         "assets": [
                             "src/favicon.ico",
+                            "src/material/material-design-icons",
                             "src/assets",
                             "src/manifest.webmanifest"
                         ],
@@ -80,6 +81,7 @@
                         "scripts": [],
                         "assets": [
                             "src/favicon.ico",
+                            "src/material/material-design-icons",
                             "src/assets",
                             "src/manifest.webmanifest"
                         ]
