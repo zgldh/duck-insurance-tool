@@ -50,7 +50,8 @@ export class AppComponent {
       compulsoryFee: 500,
       commercialFee: 500,
       compulsoryBrokerageRate: 0.04,
-      commercialBrokerage: 0.32
+      commercialBrokerage: 0.32,
+      vehicleAndVesselTax: 0,
     });
 
     combineLatest(
@@ -62,9 +63,11 @@ export class AppComponent {
         .pipe(startWith(this.form.controls.compulsoryBrokerageRate.value)),
       this.form.controls.commercialBrokerage.valueChanges
         .pipe(startWith(this.form.controls.commercialBrokerage.value)),
+      this.form.controls.vehicleAndVesselTax.valueChanges
+        .pipe(startWith(this.form.controls.vehicleAndVesselTax.value)),
     ).subscribe(result => {
-      const [compulsoryFee, commercialFee, compulsoryBrokerageRate, commercialBrokerage] = result;
-      this.totalFee = compulsoryFee + commercialFee;
+      const [compulsoryFee, commercialFee, compulsoryBrokerageRate, commercialBrokerage, vehicleAndVesselTax] = result;
+      this.totalFee = compulsoryFee + commercialFee + vehicleAndVesselTax;
 
       this.calculationResult.forEach(item => {
         switch (item.title) {

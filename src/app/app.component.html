@@ -1,67 +1,74 @@
-<mat-toolbar color="accent">
-  <span fxFlex="100%">保险佣金计算器</span>
-  <span class="sub">{{environment.version}}</span>
-</mat-toolbar>
-<div class="main-container" fxLayout="column">
-  <form [formGroup]="form" fxLayout="column" fxLayoutGap="5%">
-    <mat-form-field>
-      <mat-label>交强险</mat-label>
-      <input matInput #compulsoryFee formControlName="compulsoryFee" (focus)="onInputFocus(compulsoryFee)"
-        (keyup.enter)="commercialFee.focus()" type="number" min="0">
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>商业险</mat-label>
-      <input matInput #commercialFee formControlName="commercialFee" (focus)="onInputFocus(commercialFee)"
-        (keyup.enter)="compulsoryBrokerageRate.focus()" type="number" min="0">
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>交强险佣金率</mat-label>
-      <input matInput #compulsoryBrokerageRate formControlName="compulsoryBrokerageRate"
-        (focus)="onInputFocus(compulsoryBrokerageRate)" (keyup.enter)="commercialBrokerage.focus()" type="number"
-        min="0">
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>商业险佣金率</mat-label>
-      <input matInput #commercialBrokerage formControlName="commercialBrokerage"
-        (focus)="onInputFocus(commercialBrokerage)" (keyup.enter)="commercialBrokerage.blur()" type="number" min="0">
-    </mat-form-field>
-  </form>
+<div class="app-inner-container" ngClass.gt-xs="gt-xs">
+  <mat-toolbar color="accent">
+    <span fxFlex="100%">保险佣金计算器</span>
+    <span class="sub">{{environment.version}}</span>
+  </mat-toolbar>
+  <div class="main-container" fxLayout="column">
+    <form [formGroup]="form" fxLayout.xs="column" fxLayout="row wrap" fxLayoutGap="5%">
+      <mat-form-field fxFlex="45%" fxFlex.xs="100%">
+        <mat-label>交强险</mat-label>
+        <input matInput #compulsoryFee formControlName="compulsoryFee" (focus)="onInputFocus(compulsoryFee)"
+          (keyup.enter)="commercialFee.focus()" type="number" min="0">
+      </mat-form-field>
+      <mat-form-field fxFlex="45%" fxFlex.xs="100%">
+        <mat-label>商业险</mat-label>
+        <input matInput #commercialFee formControlName="commercialFee" (focus)="onInputFocus(commercialFee)"
+          (keyup.enter)="compulsoryBrokerageRate.focus()" type="number" min="0">
+      </mat-form-field>
+      <mat-form-field fxFlex="45%" fxFlex.xs="100%">
+        <mat-label>交强险佣金率</mat-label>
+        <input matInput #compulsoryBrokerageRate formControlName="compulsoryBrokerageRate"
+          (focus)="onInputFocus(compulsoryBrokerageRate)" (keyup.enter)="commercialBrokerage.focus()" type="number"
+          min="0">
+      </mat-form-field>
+      <mat-form-field fxFlex="45%" fxFlex.xs="100%">
+        <mat-label>商业险佣金率</mat-label>
+        <input matInput #commercialBrokerage formControlName="commercialBrokerage"
+          (focus)="onInputFocus(commercialBrokerage)" (keyup.enter)="vehicleAndVesselTax.focus()" type="number" min="0">
+      </mat-form-field>
+      <mat-form-field fxFlex="95%">
+        <mat-label>车船税</mat-label>
+        <input matInput #vehicleAndVesselTax formControlName="vehicleAndVesselTax"
+          (focus)="onInputFocus(vehicleAndVesselTax)" (keyup.enter)="vehicleAndVesselTax.blur()" type="number" min="0">
+      </mat-form-field>
+    </form>
 
-  <p>
-    <label>总保费：</label>
-    <span>{{totalFee}}</span>
-  </p>
+    <p class="total-payment">
+      <label>总保费：</label>
+      <span>{{totalFee}}</span>
+    </p>
 
-  <table class="result-table" mat-table [dataSource]="calculationResult">
+    <table class="result-table" mat-table [dataSource]="calculationResult">
 
-    <!--- Note that these columns can be defined in any order.
+      <!--- Note that these columns can be defined in any order.
         The actual rendered columns are set as a property on the row definition" -->
 
-    <!-- Position Column -->
-    <ng-container matColumnDef="title">
-      <th mat-header-cell *matHeaderCellDef> 代号 </th>
-      <td mat-cell *matCellDef="let element"> {{element.title}} </td>
-    </ng-container>
+      <!-- Position Column -->
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef> 代号 </th>
+        <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+      </ng-container>
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="label">
-      <th mat-header-cell *matHeaderCellDef> 项目 </th>
-      <td mat-cell *matCellDef="let element"> {{element.label}} </td>
-    </ng-container>
+      <!-- Name Column -->
+      <ng-container matColumnDef="label">
+        <th mat-header-cell *matHeaderCellDef> 项目 </th>
+        <td mat-cell *matCellDef="let element"> {{element.label}} </td>
+      </ng-container>
 
-    <!-- Weight Column -->
-    <ng-container matColumnDef="taxSeparated">
-      <th mat-header-cell *matHeaderCellDef class="numbers"> 价税分离 </th>
-      <td mat-cell *matCellDef="let element" class="numbers"> {{element.taxSeparated | number:'1.2-2'}} </td>
-    </ng-container>
+      <!-- Weight Column -->
+      <ng-container matColumnDef="taxSeparated">
+        <th mat-header-cell *matHeaderCellDef class="numbers"> 价税分离 </th>
+        <td mat-cell *matCellDef="let element" class="numbers"> {{element.taxSeparated | number:'1.2-2'}} </td>
+      </ng-container>
 
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="taxIncluded">
-      <th mat-header-cell *matHeaderCellDef class="numbers"> 净费 </th>
-      <td mat-cell *matCellDef="let element" class="numbers"> {{element.taxIncluded | number:'1.2-2'}} </td>
-    </ng-container>
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="taxIncluded">
+        <th mat-header-cell *matHeaderCellDef class="numbers"> 净费 </th>
+        <td mat-cell *matCellDef="let element" class="numbers"> {{element.taxIncluded | number:'1.2-2'}} </td>
+      </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="calculationColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: calculationColumns;"></tr>
-  </table>
+      <tr mat-header-row *matHeaderRowDef="calculationColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: calculationColumns;"></tr>
+    </table>
+  </div>
 </div>
