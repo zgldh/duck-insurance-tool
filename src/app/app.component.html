@@ -4,29 +4,29 @@
     <span class="sub">{{environment.version}}</span>
   </mat-toolbar>
   <div class="main-container" fxLayout="column">
-    <form [formGroup]="form" fxLayout.xs="column" fxLayout="row wrap" fxLayoutGap="5%">
-      <mat-form-field fxFlex="45%" fxFlex.xs="100%">
+    <form [formGroup]="form" fxLayout.xs="column" fxLayout="row wrap" fxLayoutAlign="start none" fxLayoutGap="5%">
+      <mat-form-field fxFlex="45%" fxFlex.xs>
         <mat-label>交强险</mat-label>
         <input matInput #compulsoryFee formControlName="compulsoryFee" (focus)="onInputFocus(compulsoryFee)"
           (keyup.enter)="commercialFee.focus()" type="number" min="0">
       </mat-form-field>
-      <mat-form-field fxFlex="45%" fxFlex.xs="100%">
+      <mat-form-field fxFlex="45%" fxFlex.xs>
         <mat-label>商业险</mat-label>
         <input matInput #commercialFee formControlName="commercialFee" (focus)="onInputFocus(commercialFee)"
           (keyup.enter)="compulsoryBrokerageRate.focus()" type="number" min="0">
       </mat-form-field>
-      <mat-form-field fxFlex="45%" fxFlex.xs="100%">
+      <mat-form-field fxFlex="45%" fxFlex.xs>
         <mat-label>交强险佣金率</mat-label>
         <input matInput #compulsoryBrokerageRate formControlName="compulsoryBrokerageRate"
           (focus)="onInputFocus(compulsoryBrokerageRate)" (keyup.enter)="commercialBrokerage.focus()" type="number"
           min="0">
       </mat-form-field>
-      <mat-form-field fxFlex="45%" fxFlex.xs="100%">
+      <mat-form-field fxFlex="45%" fxFlex.xs>
         <mat-label>商业险佣金率</mat-label>
         <input matInput #commercialBrokerage formControlName="commercialBrokerage"
           (focus)="onInputFocus(commercialBrokerage)" (keyup.enter)="vehicleAndVesselTax.focus()" type="number" min="0">
       </mat-form-field>
-      <mat-form-field fxFlex="95%">
+      <mat-form-field fxFlex="95%" fxFlex.xs>
         <mat-label>车船税</mat-label>
         <input matInput #vehicleAndVesselTax formControlName="vehicleAndVesselTax"
           (focus)="onInputFocus(vehicleAndVesselTax)" (keyup.enter)="vehicleAndVesselTax.blur()" type="number" min="0">
