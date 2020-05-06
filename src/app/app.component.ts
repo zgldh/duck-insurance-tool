@@ -48,7 +48,7 @@ export class AppComponent {
     },
     {
       title: 'netFee',
-      label: '净费',
+      label: '净保费',
       taxSeparated: 0,
       taxIncluded: 0
     }
